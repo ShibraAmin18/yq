@@ -1,0 +1,7 @@
+paytm:
+   keys:
+      mid: sdfghjklbDGH
+      
+spring:
+    datasource:
+        password: asdfghj45236
