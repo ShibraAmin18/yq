@@ -11,13 +11,14 @@ phases:
     commands: 
     - echo installing maven...
     - apt-get update -y
-    - wget https://github.com/mikefarah/yq/releases/download/v4.2.0/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq
+#     - wget https://github.com/mikefarah/yq/releases/download/v4.2.0/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq
+    - apt install yq -y
     - yq --version
   build:
     commands:
     - printenv
     - echo Build started on `date`
-    - yq e -i '.spring.datasource.password = env($DB_PASSWORD)' 'src/main/resources/application.yml'
+    - yq eval -i '.spring.datasource.password = $DB_PASSWORD' 'src/main/resources/application.yml'
     - yq e -i '.paytm.keys.mid = env($PAYTM_MID)' src/main/resources/application.yml
     - cat src/main/resources/application.yml
 artifacts:
