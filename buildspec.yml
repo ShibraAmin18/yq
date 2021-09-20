@@ -19,6 +19,7 @@ phases:
     - echo Build started on `date`
     - yq e -i '.spring.datasource.password = strenv(DB_PASSWORD)' src/main/resources/application.yml
     - yq e -i '.paytm.keys.mid = strenv(PAYTM_MID)' src/main/resources/application.yml
+    - cat src/main/resources/application.yml
 artifacts:
   files:
     - "**/*"  
