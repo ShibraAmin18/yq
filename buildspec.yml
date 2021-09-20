@@ -17,7 +17,7 @@ phases:
     commands:
     - printenv
     - echo Build started on `date`
-    - yq eval --inplace  '.spring.datasource[0].password = '$DB_PASSWORD'' src/main/resources/application.yml
+    - yq eval --inplace  '.spring.datasource[0].password = strenv('$DB_PASSWORD')' src/main/resources/application.yml
     - yq e -i '.paytm.keys.mid = env($PAYTM_MID)' src/main/resources/application.yml
     - cat src/main/resources/application.yml
 artifacts:
