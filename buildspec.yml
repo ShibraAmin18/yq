@@ -17,7 +17,7 @@ phases:
     commands:
     - printenv
     - echo Build started on `date`
-    - yq e -i ".spring.datasource[0].password = \"$DB_PASSWORD\"" src/main/resources/application.yml
+    - yq e -i ".spring.datasource.password = \"$DB_PASSWORD\"" src/main/resources/application.yml
     - yq e -i ".paytm.keys.mid = \"$PAYTM_MID\"" src/main/resources/application.yml
     - cat src/main/resources/application.yml
 artifacts:
